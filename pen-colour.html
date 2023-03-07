@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--bootstrap css-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <!--font awesome css-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!--bootstrap js-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <!-- import jquery js-->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <!--custom css-->
+    <link rel="stylesheet" href="./pen-colour.css" />
+    <title>Game of Life - New Game</title>
+  </head>
+  <body>
+    <!--create new game modal one-->
+    <div
+      class="modal fade"
+      id="ModalStepOne"
+      aria-hidden="true"
+      aria-labelledby="ModalStepOneLabel"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="ModalStepOneLabel">
+              step 1: choose your generator
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="container" style="background: rgba(0, 0, 0, 0)">
+              <div class="row">
+                <div
+                  href="#ModalStepTwoPregen"
+                  class="col-md-6"
+                  data-bs-target="#ModalStepTwoPregen"
+                  data-bs-toggle="modal"
+                >
+                  <img
+                    class="img-shadow"
+                    src="./assets/choose_pregenmono.gif"
+                    alt="pen"
+                    style="margin-bottom: 2vh"
+                  />
+                  <h6><i>pregen</i></h6>
+                  <p style="font-size: 15px">
+                    Sit back and let us set up the game for you
+                  </p>
+                </div>
+                <div
+                  href="#ModalStepTwoPen"
+                  class="col-md-6"
+                  data-bs-target="#ModalStepTwoPen"
+                  data-bs-toggle="modal"
+                >
+                  <img
+                    class="img-shadow"
+                    src="./assets/choose_pen.gif"
+                    alt="pen"
+                    style="margin-bottom: 2vh"
+                  />
+                  <h6><i>pen</i></h6>
+                  <p style="font-size: 15px">
+                    Take control of your game and create life as you like
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="row">
+              <div class="col-md-12 modal-footer-progress">
+                <div class="progress-button-on"></div>
+                <div class="progress-button-off"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--create new game modal two-->
+    <div
+      class="modal fade"
+      id="ModalStepTwoPregen"
+      aria-hidden="true"
+      aria-labelledby="ModalStepTwoPregenLabel"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="ModalStepTwoPregenLabel">
+              step 2: choose your colour scheme
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="container" style="background: rgba(0, 0, 0, 0)">
+              <div class="row">
+                <div href="#" class="col-md-6">
+                  <a href="./pregen-mono.html">
+                    <img
+                      class="img-shadow"
+                      src="./assets/choose_pregenmono.gif"
+                      alt="pen"
+                      style="margin-bottom: 2vh"
+                    />
+                  </a>
+                  <h6><i>monochromatic</i></h6>
+                  <p style="font-size: 15px">Go for a subdued look</p>
+                </div>
+                <div href="#" class="col-md-6">
+                  <a href="./pregen-colour.html">
+                    <img
+                      class="img-shadow"
+                      src="./assets/choose_colour.gif"
+                      alt="pen"
+                      style="margin-bottom: 2vh"
+                    />
+                  </a>
+                  <h6><i>colourful</i></h6>
+                  <p style="font-size: 15px">
+                    Embrace the full spectrum of colours
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="row">
+              <div class="col-md-4 modal-footer-back">
+                <a href="#"
+                  ><i
+                    class="fa-solid fa-arrow-left"
+                    data-bs-target="#ModalStepOne"
+                    data-bs-toggle="modal"
+                  ></i
+                ></a>
+              </div>
+              <div class="col-md-4 modal-footer-progress">
+                <div class="progress-button-off"></div>
+                <div class="progress-button-on"></div>
+              </div>
+              <div class="col-md-4 modal-footer-back"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--create new game modal three-->
+    <div
+      class="modal fade"
+      id="ModalStepTwoPen"
+      aria-hidden="true"
+      aria-labelledby="ModalStepTwoPenLabel"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="ModalStepTwoPenLabel">
+              step 2: choose your colour scheme
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="container" style="background: rgba(0, 0, 0, 0)">
+              <div class="row">
+                <div href="#" class="col-md-6">
+                  <a href="./pen-mono.html">
+                    <img
+                      class="img-shadow"
+                      src="./assets/choose_pregenmono.gif"
+                      alt="pen"
+                      style="margin-bottom: 2vh"
+                    />
+                  </a>
+                  <h6><i>monochromatic</i></h6>
+                  <p style="font-size: 15px">Go for a subdued look</p>
+                </div>
+                <div href="#" class="col-md-6">
+                  <a href="./pen-colour.html">
+                    <img
+                      class="img-shadow"
+                      src="./assets/choose_colour.gif"
+                      alt="pen"
+                      style="margin-bottom: 2vh"
+                    />
+                  </a>
+                  <h6><i>colourful</i></h6>
+                  <p>Embrace the full spectrum of colours</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="row">
+              <div class="col-md-4 modal-footer-back">
+                <a href="#"
+                  ><i
+                    class="fa-solid fa-arrow-left"
+                    data-bs-target="#ModalStepOne"
+                    data-bs-toggle="modal"
+                  ></i
+                ></a>
+              </div>
+              <div class="col-md-4 modal-footer-progress">
+                <div class="progress-button-off"></div>
+                <div class="progress-button-on"></div>
+              </div>
+              <div class="col-md-4 modal-footer-back"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--keyboard controls modal-->
+    <div
+      class="modal fade"
+      id="ControlsModal"
+      aria-hidden="true"
+      aria-labelledby="ControlsModalLabel"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="ControlsModalLabel">controls</h1>
+          </div>
+          <div class="modal-body">
+            <div class="container" style="background: rgba(0, 0, 0, 0)">
+              <div class="row">
+                <div href="#" class="col-md-6 modal-text">
+                  <p style="font-size: 15px">use the pen to draw</p>
+                </div>
+                <div href="#" class="col-md-6 modal-text">
+                  <img src="./assets/controls_pen.png" alt="pen-cursor" />
+                </div>
+              </div>
+              <div class="row">
+                <div href="#" class="col-md-6 modal-text">
+                  <p style="font-size: 15px">
+                    use the slider to adjust game speed
+                  </p>
+                </div>
+                <div href="#" class="col-md-6 modal-text">
+                  <img src="./assets/controls_slider.png" alt="slider" />
+                </div>
+              </div>
+              <div class="row">
+                <div href="#" class="col-md-6 modal-text">
+                  <p style="font-size: 15px">play / pause</p>
+                </div>
+                <div
+                  href="#"
+                  class="col-md-6 modal-text"
+                  style="text-align: center"
+                >
+                  spacebar
+                </div>
+              </div>
+              <div class="row">
+                <div href="#" class="col-md-6 modal-text">
+                  <p style="font-size: 15px">reset</p>
+                </div>
+                <div
+                  href="#"
+                  class="col-md-6 modal-text"
+                  style="text-align: center"
+                >
+                  backspace
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" data-bs-dismiss="modal">ok</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--how to play modal-->
+    <div
+      class="modal fade"
+      id="howtoplay"
+      tabindex="-1"
+      aria-labelledby="howtoplayLabel"
+      aria-hidden="true"
+    >
+      <div
+        class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="howtoplayLabel">How to Play</h1>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12 modal-text">
+                  The Game of Life opens with a 2D grid of squares. The game
+                  starts when the player colours in some of the squares.
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 modal-text">
+                  <img
+                    class="demo"
+                    src="./assets/howtoplay_newexample.gif"
+                    alt="example"
+                  />
+                </div>
+              </div>
+              <div class="row extra-spacing">
+                <div class="col-md-12 modal-text">
+                  Squares that are coloured in contain life. Squares that are
+                  blank do not contain life. As the game progresses, squares may
+                  gain or lose life depending on whether their neighbouring
+                  squares contain life or not. The precise machinations can be
+                  found below:
+                </div>
+              </div>
+              <div class="row extra-spacing">
+                <div class="col-md-6 modal-text">
+                  If a square contains life and has less than 2 neighbours that
+                  also contain life, the square will die from loneliness.
+                  <br /><br />If a square contains life and has more than 3
+                  neighbours that also contain life, the square will die from
+                  overpopulation.
+                </div>
+                <div class="col-md-6 modal-text">
+                  <img src="./assets/howtoplay_dying.gif" alt="squares dying" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 modal-text">
+                  If a square does not contain life and has 2-3 neighbours that
+                  also contain life, nothing changes for this square.
+                  <br />
+                  <br />
+                  If a square does not contain life but has 3 neighbours that do
+                  contain life, the square will gain life.
+                </div>
+                <div class="col-md-6 modal-text">
+                  <img src="./assets/howtoplay_alive.gif" alt="reproduction" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12" style="justify-content: left !important">
+                  Have fun!
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--body container-->
+    <div class="container-fluid">
+      <!--header-->
+      <div class="row header">
+        <a href="./index.html" class="title">
+          <div class="col-md-12">
+            <h1>The Game of Life</h1>
+          </div>
+        </a>
+      </div>
+      <!--navbar-->
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item px-5">
+                <a
+                  href="#"
+                  data-bs-toggle="modal"
+                  data-bs-target="#howtoplay"
+                  class="nav-link"
+                  >How to Play</a
+                >
+              </li>
+              <li class="nav-item px-5">
+                <a
+                  href="#"
+                  data-bs-toggle="modal"
+                  data-bs-target="#ControlsModal"
+                  class="nav-link"
+                  >Controls</a
+                >
+              </li>
+              <li class="nav-item px-5">
+                <a
+                  class="nav-link"
+                  href="#ModalStepOne"
+                  data-bs-target="#ModalStepOne"
+                  data-bs-toggle="modal"
+                  >Create a New Game</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!--p5.js-->
+      <div id="canvas"></div>
+      <div id="slider"></div>
+      <!--game buttons-->
+      <div class="row general">
+        <div class="col-md-6 width-45 text-right">
+          <button
+            type="button"
+            id="pause-game"
+            class="btn btn-primary"
+            title="keyboard: space"
+          >
+            Play / Pause
+          </button>
+        </div>
+        <div class="col-md-6 width-45 text-left">
+          <button
+            type="button"
+            id="reset-game"
+            class="btn btn-primary"
+            title="keyboard: backspace"
+          >
+            Start Over
+          </button>
+        </div>
+      </div>
+      <!--footer-->
+      <div class="row footer">
+        <div class="col-md-4 footer-content text-right">
+          <div class="credits">Designed at Tecky Academy</div>
+        </div>
+        <div class="divider"><span style="font-style: normal">·</span></div>
+        <div class="col-md-1 footer-content">
+          <div class="about-me">
+            <a href="aboutme.html">About Me</a>
+          </div>
+        </div>
+        <div class="divider"><span style="font-style: normal">·</span></div>
+        <div class="col-md-4 footer-content text-left">
+          <div class="credits">
+            <a href="https://github.com/onu941/">Find Me on GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--other scripts-->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
+    <script src="pen-colour.js"></script>
+  </body>
+</html>
