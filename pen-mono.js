@@ -11,6 +11,13 @@ let pause = false;
 let resetGame = document.querySelector("#reset-game");
 let playPause = document.querySelector("#pause-game");
 
+let pattern = "none";
+let patternButton = document
+  .querySelector("#pattern-selection")
+  .addEventListener("change", (e) => {
+    pattern = e.target.value;
+  });
+
 function setup() {
   noCursor();
   /* Set the canvas to be under the element #canvas*/
@@ -52,6 +59,7 @@ function init() {
 }
 
 function draw() {
+  console.log('draw')
   background("#f0f0f5");
   generate();
   for (let i = 0; i < columns; i++) {
@@ -127,6 +135,9 @@ function mouseDragged() {
   if (mouseX > unitLength * columns || mouseY > unitLength * rows) {
     return;
   }
+  if (pattern != "none") {
+    return;
+  }
   const x = Math.floor(mouseX / unitLength);
   const y = Math.floor(mouseY / unitLength);
   currentBoard[x][y] = 1;
@@ -142,9 +153,43 @@ function mouseDragged() {
  * When mouse is pressed
  */
 function mousePressed() {
+  /**
+   * If the mouse coordinate is outside the board
+   */
+  if (mouseX > unitLength * columns || mouseY > unitLength * rows || mouseX < 0 || mouseY < 0) {
+    return;
+  }
   noLoop();
-  mouseDragged();
+  if (pattern != "none") {
+    mouseBoxX = Math.floor(mouseX / unitLength)
+    mouseBoxY = Math.floor(mouseY / unitLength)
+    console.log(mouseBoxX, mouseBoxY)
+    if (pattern == "1") {
+      for (let i = 0; i < pattern1.length; i++){
+        for (let j = 0; j < pattern1[i].length; j++){
+          const newX = (mouseBoxX + i + columns) % columns
+          const newY = (mouseBoxY + j + rows) % rows
+          currentBoard[newX][newY] = pattern1[i][j]
+          console.log(`pattern[${i}][${j}]: ${pattern1[i][j]}`)
+          fill(100)
+          stroke(strokeColor);
+          rect(newX * unitLength, newY * unitLength, unitLength, unitLength);
+        }
+      }
+
+    } else if (pattern == "2") {
+      console.log("pattern: ", pattern);
+    }
+  } else {
+    mouseDragged();
+  }
 }
+
+const pattern1 = [
+  [0, 0, 0, 0],
+  [1, 1, 1, 1],
+  [0, 0, 0, 0]
+]
 
 /**
  * When mouse is released
@@ -157,7 +202,7 @@ function mouseDragged() {
   /**
    * If the mouse coordinate is outside the board
    */
-  if (mouseX > unitLength * columns || mouseY > unitLength * rows) {
+  if (mouseX > unitLength * columns || mouseY > unitLength * rows || mouseX < 0 || mouseY < 0) {
     return;
   }
   const x = Math.floor(mouseX / unitLength);
@@ -181,15 +226,16 @@ playPause.addEventListener("click", function () {
   pause = !pause;
   if (pause == true) {
     noLoop();
-    document.playPause.innerHTML = "resume";
+    playPause.innerHTML = "resume";
   } else if (pause == false) {
     loop();
-    document.playPause.innerHTML = "pause";
+    playPause.innerHTML = "pause";
   }
 });
 
 // Play and pause the game with keyboard
 function keyTyped() {
+  console.log("keyTyped");
   if (key === " ") {
     pause = !pause;
 
@@ -203,7 +249,9 @@ function keyTyped() {
 
 // Reset the game with keyboard
 function keyPressed() {
+  console.log("keypressed");
   if (keyCode === BACKSPACE) {
+    console.log("backspace");
     if (pause == true) {
       loop();
       init();
