@@ -11,13 +11,6 @@ let pause = false;
 let resetGame = document.querySelector("#reset-game");
 let playPause = document.querySelector("#pause-game");
 
-let pattern = "none";
-let patternButton = document
-  .querySelector("#pattern-selection")
-  .addEventListener("change", (e) => {
-    pattern = e.target.value;
-  });
-
 function setup() {
   noCursor();
   /* Set the canvas to be under the element #canvas*/
@@ -26,8 +19,6 @@ function setup() {
 
   frSlider = createSlider(1, 50, 10);
   frSlider.parent(document.querySelector("#slider"));
-  // frSlider.position(200, 400);
-  // frSlider.position(850, 1090);
   frSlider.size(windowHeight * 0.4, 20);
 
   /*Calculate the number of columns and rows */
@@ -51,7 +42,6 @@ function setup() {
 function init() {
   for (let i = 0; i < columns; i++) {
     for (let j = 0; j < rows; j++) {
-      // currentBoard[i][j] = Math.round(Math.random());
       currentBoard[i][j] = 0;
       nextBoard[i][j] = 0;
     }
@@ -59,15 +49,11 @@ function init() {
 }
 
 function draw() {
-  console.log('draw')
   background("#f0f0f5");
   generate();
   for (let i = 0; i < columns; i++) {
     for (let j = 0; j < rows; j++) {
       if (currentBoard[i][j] == 1) {
-        // let r = Math.floor(Math.random() * 255);
-        // let g = Math.floor(Math.random() * 255);
-        // let b = Math.floor(Math.random() * 255);
         fill(boxColor);
       } else {
         fill("#f0f0f5");
@@ -80,7 +66,8 @@ function draw() {
 
   fill("#000000");
   textSize(16);
-  text("frame rate: " + frSlider.value(), width * 0.475, height * 0.985);
+  textAlign(CENTER, BOTTOM);
+  text("frame rate: " + frSlider.value(), width * 0.5, height * 0.985);
 
   fill(boxColor);
   square(mouseX, mouseY, unitLength);
@@ -132,18 +119,17 @@ function mouseDragged() {
   /**
    * If the mouse coordinate is outside the board
    */
-  if (mouseX > unitLength * columns || mouseY > unitLength * rows) {
-    return;
-  }
-  if (pattern != "none") {
+  if (
+    mouseX > unitLength * columns ||
+    mouseY > unitLength * rows ||
+    mouseX < 0 ||
+    mouseY < 0
+  ) {
     return;
   }
   const x = Math.floor(mouseX / unitLength);
   const y = Math.floor(mouseY / unitLength);
   currentBoard[x][y] = 1;
-  // let r = Math.floor(Math.random() * 255);
-  // let g = Math.floor(Math.random() * 255);
-  // let b = Math.floor(Math.random() * 255);
   fill(boxColor);
   stroke(strokeColor);
   rect(x * unitLength, y * unitLength, unitLength, unitLength);
@@ -153,43 +139,11 @@ function mouseDragged() {
  * When mouse is pressed
  */
 function mousePressed() {
-  /**
-   * If the mouse coordinate is outside the board
-   */
-  if (mouseX > unitLength * columns || mouseY > unitLength * rows || mouseX < 0 || mouseY < 0) {
-    return;
-  }
+  pause = false;
+  playPause.innerHTML = "pause";
   noLoop();
-  if (pattern != "none") {
-    mouseBoxX = Math.floor(mouseX / unitLength)
-    mouseBoxY = Math.floor(mouseY / unitLength)
-    console.log(mouseBoxX, mouseBoxY)
-    if (pattern == "1") {
-      for (let i = 0; i < pattern1.length; i++){
-        for (let j = 0; j < pattern1[i].length; j++){
-          const newX = (mouseBoxX + i + columns) % columns
-          const newY = (mouseBoxY + j + rows) % rows
-          currentBoard[newX][newY] = pattern1[i][j]
-          console.log(`pattern[${i}][${j}]: ${pattern1[i][j]}`)
-          fill(100)
-          stroke(strokeColor);
-          rect(newX * unitLength, newY * unitLength, unitLength, unitLength);
-        }
-      }
-
-    } else if (pattern == "2") {
-      console.log("pattern: ", pattern);
-    }
-  } else {
-    mouseDragged();
-  }
+  mouseDragged();
 }
-
-const pattern1 = [
-  [0, 0, 0, 0],
-  [1, 1, 1, 1],
-  [0, 0, 0, 0]
-]
 
 /**
  * When mouse is released
@@ -202,15 +156,17 @@ function mouseDragged() {
   /**
    * If the mouse coordinate is outside the board
    */
-  if (mouseX > unitLength * columns || mouseY > unitLength * rows || mouseX < 0 || mouseY < 0) {
+  if (
+    mouseX > unitLength * columns ||
+    mouseY > unitLength * rows ||
+    mouseX < 0 ||
+    mouseY < 0
+  ) {
     return;
   }
   const x = Math.floor(mouseX / unitLength);
   const y = Math.floor(mouseY / unitLength);
   currentBoard[x][y] = 1;
-  // let r = Math.floor(Math.random() * 255);
-  // let g = Math.floor(Math.random() * 255);
-  // let b = Math.floor(Math.random() * 255);
   fill(boxColor);
   stroke(strokeColor);
   rect(x * unitLength, y * unitLength, unitLength, unitLength);
@@ -235,27 +191,26 @@ playPause.addEventListener("click", function () {
 
 // Play and pause the game with keyboard
 function keyTyped() {
-  console.log("keyTyped");
   if (key === " ") {
     pause = !pause;
-
     if (pause == true) {
       noLoop();
+      playPause.innerHTML = "resume";
     } else if (pause == false) {
       loop();
+      playPause.innerHTML = "pause";
     }
   }
 }
 
 // Reset the game with keyboard
 function keyPressed() {
-  console.log("keypressed");
   if (keyCode === BACKSPACE) {
-    console.log("backspace");
     if (pause == true) {
       loop();
       init();
       pause = !pause;
+      playPause.innerHTML = "pause";
     } else if (pause == false) {
       init();
     }

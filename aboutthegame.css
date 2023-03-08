@@ -1,3 +1,62 @@
+@media only screen and (max-width: 768px) {
+  .title {
+    font-size: 60px !important;
+    margin-bottom: 6vh !important;
+  }
+
+  .col-sm-4 {
+    width: fit-content !important;
+  }
+
+  .body-text {
+    margin-bottom: 2vh;
+  }
+
+  .btn {
+    font-size: 14px !important;
+  }
+
+  .footer {
+    font-size: 12px !important;
+  }
+
+  .divider {
+    font-size: 12px !important;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .title {
+    font-size: 32px !important;
+    margin-bottom: 6vh !important;
+  }
+
+  .body-text {
+    font-size: 12px !important;
+    margin-bottom: 2vh;
+  }
+
+  i {
+    margin: 12px 8vh 8vh 8vh !important;
+  }
+
+  .col-sm-4 {
+    width: fit-content !important;
+  }
+
+  .footer {
+    font-size: 12px !important;
+  }
+
+  .btn {
+    font-size: 12px !important;
+  }
+
+  .divider {
+    font-size: 12px !important;
+  }
+}
+
 @font-face {
   font-family: "Mosk";
   src: url(./assets/Mosk\ Extra-Bold\ 800.ttf);
@@ -15,6 +74,11 @@ body {
 a {
   color: inherit;
   text-decoration: inherit;
+}
+
+.youtube-video {
+  width: 40%;
+  aspect-ratio: 16/ 9;
 }
 
 .btn-primary,
@@ -44,6 +108,7 @@ a {
   margin-bottom: 6vh;
   font-family: "Mosk";
   font-size: 100px;
+  font-style: italic;
   color: #5656e4;
   text-shadow: 2px 2px 7px #9494a8;
 }
@@ -66,6 +131,7 @@ a {
   align-content: center;
   align-items: center;
   text-align: center;
+  height: fit-content;
 }
 
 .body-text {
@@ -77,20 +143,21 @@ a {
 }
 
 .footer {
-  position: relative;
+  position: absolute;
   display: flex;
   height: fit-content;
   width: 100%;
   position: fixed;
   bottom: 0;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   color: white;
   font-style: italic;
+  font-size: 16px;
   background-color: #4e4e50;
   align-items: center;
   justify-content: center;
-  opacity: 0.4;
+  opacity: 0.35;
 }
 
 .width-45 {
@@ -108,8 +175,14 @@ a {
   max-width: 1.5%;
   font-size: 20px;
   padding: 0;
+  margin-left: 0.2vh;
+  margin-right: 0.2vh;
   text-align: center;
   justify-content: center;
+}
+
+.tiny {
+  width: fit-content;
 }
 
 .col-md-1 {

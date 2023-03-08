@@ -262,7 +262,7 @@
       aria-labelledby="ControlsModalLabel"
       tabindex="-1"
     >
-      <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="ControlsModalLabel">controls</h1>
@@ -270,17 +270,19 @@
           <div class="modal-body">
             <div class="container" style="background: rgba(0, 0, 0, 0)">
               <div class="row">
-                <div href="#" class="col-md-6 modal-text">
-                  <p style="font-size: 15px">use the pen to draw</p>
-                </div>
-                <div href="#" class="col-md-6 modal-text">
-                  <img src="./assets/controls_pen.png" alt="pen-cursor" />
+                <div href="#" class="col-md-12 modal-text">
+                  <p style="font-size: 15px">
+                    in pregen mode, a
+                    <span style="font-weight: 700">random</span> game of life is
+                    initiated. there is no need to draw anything.
+                  </p>
                 </div>
               </div>
               <div class="row">
                 <div href="#" class="col-md-6 modal-text">
                   <p style="font-size: 15px">
-                    use the slider to adjust game speed
+                    adjust the speed with your
+                    <span style="font-weight: 700">slider</span>
                   </p>
                 </div>
                 <div href="#" class="col-md-6 modal-text">
@@ -288,27 +290,20 @@
                 </div>
               </div>
               <div class="row">
-                <div href="#" class="col-md-6 modal-text">
-                  <p style="font-size: 15px">play / pause</p>
-                </div>
-                <div
-                  href="#"
-                  class="col-md-6 modal-text"
-                  style="text-align: center"
-                >
-                  spacebar
+                <div href="#" class="col-md-12 modal-text">
+                  <p style="font-size: 15px">
+                    to <span style="font-weight: 700">pause</span> or
+                    <span style="font-weight: 700">resume</span>, press space or
+                    use the pause/resume button.
+                  </p>
                 </div>
               </div>
               <div class="row">
-                <div href="#" class="col-md-6 modal-text">
-                  <p style="font-size: 15px">reset</p>
-                </div>
-                <div
-                  href="#"
-                  class="col-md-6 modal-text"
-                  style="text-align: center"
-                >
-                  backspace
+                <div href="#" class="col-md-12 modal-text">
+                  <p style="font-size: 15px">
+                    to <span style="font-weight: 700">reset</span>, press
+                    backspace or use the start over button.
+                  </p>
                 </div>
               </div>
             </div>
@@ -466,21 +461,19 @@
       <div id="slider"></div>
       <!--game buttons-->
       <div class="row general">
-        <div class="col-md-6 width-45 text-right">
+        <div class="col-md-12 general">
           <button
             type="button"
             id="pause-game"
-            class="btn btn-primary"
+            class="btn btn-primary some-space"
             title="keyboard: space"
           >
-            Play / Pause
+            pause
           </button>
-        </div>
-        <div class="col-md-6 width-45 text-left">
           <button
             type="button"
             id="reset-game"
-            class="btn btn-primary"
+            class="btn btn-primary some-space"
             title="keyboard: backspace"
           >
             Start Over
@@ -489,17 +482,17 @@
       </div>
       <!--footer-->
       <div class="row footer">
-        <div class="col-md-4 footer-content text-right">
-          <div class="credits">Designed at Tecky Academy</div>
+        <div class="col-sm-4 text-right">
+          <div class="credits">Designed at Tecky</div>
         </div>
         <div class="divider"><span style="font-style: normal">·</span></div>
-        <div class="col-md-1 footer-content">
-          <div class="about-me">
+        <div class="tiny">
+          <div class="about-me" style="text-align: center">
             <a href="aboutme.html">About Me</a>
           </div>
         </div>
         <div class="divider"><span style="font-style: normal">·</span></div>
-        <div class="col-md-4 footer-content text-left">
+        <div class="col-sm-4 text-left">
           <div class="credits">
             <a href="https://github.com/onu941/">Find Me on GitHub</a>
           </div>

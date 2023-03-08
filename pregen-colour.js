@@ -18,8 +18,6 @@ function setup() {
 
   frSlider = createSlider(1, 50, 10);
   frSlider.parent(document.querySelector("#slider"));
-  // frSlider.position(200, 400);
-  // frSlider.position(850, 1090);
   frSlider.size(windowHeight * 0.4, 20);
 
   /*Calculate the number of columns and rows */
@@ -44,7 +42,6 @@ function init() {
   for (let i = 0; i < columns; i++) {
     for (let j = 0; j < rows; j++) {
       currentBoard[i][j] = Math.round(Math.random());
-      // currentBoard[i][j] = 0;
       nextBoard[i][j] = 0;
     }
   }
@@ -71,7 +68,8 @@ function draw() {
 
   fill("#000000");
   textSize(16);
-  text("frame rate: " + frSlider.value(), width * 0.475, height * 0.985);
+  textAlign(CENTER, BOTTOM);
+  text("frame rate: " + frSlider.value(), width * 0.5, height * 0.985);
 }
 
 function generate() {
@@ -123,10 +121,10 @@ playPause.addEventListener("click", function () {
   pause = !pause;
   if (pause == true) {
     noLoop();
-    document.playPause.innerHTML = "resume";
+    playPause.innerHTML = "resume";
   } else if (pause == false) {
     loop();
-    document.playPause.innerHTML = "pause";
+    playPause.innerHTML = "pause";
   }
 });
 
@@ -134,11 +132,12 @@ playPause.addEventListener("click", function () {
 function keyTyped() {
   if (key === " ") {
     pause = !pause;
-
     if (pause == true) {
       noLoop();
+      playPause.innerHTML = "resume";
     } else if (pause == false) {
       loop();
+      playPause.innerHTML = "pause";
     }
   }
 }
@@ -150,6 +149,7 @@ function keyPressed() {
       loop();
       init();
       pause = !pause;
+      playPause.innerHTML = "pause";
     } else if (pause == false) {
       init();
     }

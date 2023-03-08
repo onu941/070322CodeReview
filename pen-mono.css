@@ -1,3 +1,45 @@
+@media only screen and (max-width: 630px) {
+  h1 {
+    font-size: 36px !important;
+  }
+
+  .col-sm-4 {
+    width: fit-content !important;
+  }
+
+  .btn {
+    font-size: 14px !important;
+  }
+
+  .footer {
+    font-size: 12px !important;
+  }
+
+  .divider {
+    font-size: 12px !important;
+  }
+}
+
+@media only screen and (max-width: 280px) {
+  h1 {
+    font-size: 28px !important;
+  }
+
+  .col-sm-4 {
+    width: fit-content !important;
+  }
+  .footer {
+    font-size: 12px !important;
+  }
+
+  .btn {
+    font-size: 12px !important;
+  }
+
+  .divider {
+    font-size: 12px !important;
+  }
+}
 @font-face {
   font-family: "Libre Franklin";
   src: url(./assets/Libre_Franklin/LibreFranklin-VariableFont_wght.ttf);
@@ -53,6 +95,7 @@ h5 {
 }
 
 .container-fluid {
+  position: relative;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -88,7 +131,7 @@ h5 {
 
 #canvas {
   display: flex;
-  margin-top: 6.5vh;
+  margin-top: 3.5vh;
   margin-bottom: 2vh;
   width: 100%;
   justify-content: center;
@@ -123,7 +166,27 @@ h5 {
 
 .general {
   display: flex;
+  flex-flow: row wrap;
   justify-content: center;
+}
+
+.pattern-div {
+  font-style: italic;
+  text-transform: lowercase;
+}
+
+#pattern-selection {
+  margin-left: 1vh;
+  color: #ffffff;
+  padding: 8px;
+}
+
+#pattern-selection:hover {
+  color: #f83bd5;
+}
+
+.some-space {
+  margin: 1vh;
 }
 
 .btn-primary,
@@ -210,20 +273,21 @@ h5 {
 }
 
 .footer {
-  position: relative;
+  position: absolute;
   display: flex;
   height: fit-content;
   width: 100%;
   position: fixed;
   bottom: 0;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 2px;
+  padding-bottom: 2px;
   color: white;
   font-style: italic;
+  font-size: 14px;
   background-color: #4e4e50;
   align-items: center;
   justify-content: center;
-  opacity: 0.6;
+  opacity: 0.45;
 }
 
 .width-45 {
@@ -241,8 +305,14 @@ h5 {
   max-width: 1.5%;
   font-size: 20px;
   padding: 0;
+  margin-left: 0.2vh;
+  margin-right: 0.2vh;
   text-align: center;
   justify-content: center;
+}
+
+.tiny {
+  width: fit-content;
 }
 
 .col-md-1 {

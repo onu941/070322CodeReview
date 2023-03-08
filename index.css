@@ -1,3 +1,58 @@
+@media only screen and (max-width: 630px) {
+  .title {
+    font-size: 60px !important;
+    margin-bottom: 6vh !important;
+  }
+
+  .col-sm-4 {
+    width: fit-content !important;
+  }
+
+  .subheading {
+    margin-bottom: 2vh;
+  }
+
+  .btn {
+    font-size: 14px !important;
+  }
+
+  .footer {
+    font-size: 12px !important;
+  }
+
+  .divider {
+    font-size: 12px !important;
+  }
+}
+
+@media only screen and (max-width: 280px) {
+  .title {
+    font-size: 28px !important;
+    margin-bottom: 6vh !important;
+  }
+
+  .subheading {
+    font-size: 14px !important;
+    margin-bottom: 2vh;
+  }
+
+  .col-sm-4 {
+    width: fit-content !important;
+  }
+
+  .footer {
+    font-size: 12px !important;
+  }
+
+  .btn {
+    font-size: 12px !important;
+  }
+
+  .divider {
+    font-size: 12px !important;
+  }
+}
+
 @font-face {
   font-family: "Mosk";
   src: url(./assets/Mosk\ Extra-Bold\ 800.ttf);
@@ -75,20 +130,21 @@ h1 {
 }
 
 .footer {
-  position: relative;
+  position: absolute;
   display: flex;
   height: fit-content;
   width: 100%;
   position: fixed;
   bottom: 0;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   color: white;
   font-style: italic;
+  font-size: 16px;
   background-color: #4e4e50;
   align-items: center;
   justify-content: center;
-  opacity: 0.4;
+  opacity: 0.35;
 }
 
 .width-45 {
@@ -106,8 +162,14 @@ h1 {
   max-width: 1.5%;
   font-size: 20px;
   padding: 0;
+  margin-left: 0.2vh;
+  margin-right: 0.2vh;
   text-align: center;
   justify-content: center;
+}
+
+.tiny {
+  width: fit-content;
 }
 
 .col-md-1 {
