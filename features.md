@@ -7,7 +7,7 @@
 [x] Start/stop the Game of Life
 [x] Multiple colours of life on the same board
 [x] Random initial states
-[x] Resize board when window is resized
+[x] Responsive website
 
 # Achieved (Bootstrap)
 
@@ -18,6 +18,5 @@
 # Achieved (Others)
 
 [x] Pen cursor (square) for non-random game modes
-[x] Keyboard controls for play, pause and reset
-[x] Speed (frame rate) display for slider
-[ ] Cycle counter (no. of generations) display
+[x] Keyboard controls for pause, resume and reset
+[x] Speed (frame rate) display for slides
